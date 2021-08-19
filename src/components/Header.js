@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import { withRouter } from 'react-router';
 
 const HeaderWrapper = styled.header`
     color:white;
@@ -31,21 +32,23 @@ const StyledLink = styled(Link)`
     display:flex;
     justify-content:center;
     align-items:center;
+    border-bottom:5px solid ${props=>props.current?'#3498db':'transparent'};
+    transition:border-bottom .5s linear;
 `;
 
-const Header = () => {
+const Header = ({location:{pathname}}) => {
     return(
         <HeaderWrapper>
             <NavWrapper>
                 <LinkList>
                     <LinkItem>
-                        <StyledLink to="/">Movies</StyledLink>
+                        <StyledLink current={pathname==='/'} to="/">Movies</StyledLink>
                     </LinkItem>
                     <LinkItem>
-                        <StyledLink to="/tv">TV</StyledLink>
+                        <StyledLink current={pathname==='/tv'} to="/tv">TV</StyledLink>
                     </LinkItem>
                     <LinkItem>
-                        <StyledLink to="/search">Search</StyledLink>
+                        <StyledLink current={pathname==='/search'} to="/search">Search</StyledLink>
                     </LinkItem>
                 </LinkList>
             </NavWrapper>
@@ -53,4 +56,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default withRouter(Header);
