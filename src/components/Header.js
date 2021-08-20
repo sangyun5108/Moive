@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { withRouter } from 'react-router';
+import getLocation from '../utils/getLocation';
 
 const HeaderWrapper = styled.header`
     color:white;
@@ -32,8 +33,16 @@ const StyledLink = styled(Link)`
     display:flex;
     justify-content:center;
     align-items:center;
-    border-bottom:5px solid ${props=>props.current?'#3498db':'transparent'};
-    transition:border-bottom .5s linear;
+`;
+
+const FocusLine = styled.div`
+    width:50px;
+    height:5px;
+    position:absolute;
+    bottom:1px;
+    transform:translateX(${props=>props.location*50}px);
+    transition:transform 0.3s ease 0s;
+    background-color:#3498db;
 `;
 
 const Header = ({location:{pathname}}) => {
@@ -42,15 +51,17 @@ const Header = ({location:{pathname}}) => {
             <NavWrapper>
                 <LinkList>
                     <LinkItem>
-                        <StyledLink current={pathname==='/'} to="/">Movies</StyledLink>
+                        <StyledLink to="/">Movies</StyledLink>
                     </LinkItem>
                     <LinkItem>
-                        <StyledLink current={pathname==='/tv'} to="/tv">TV</StyledLink>
+                        <StyledLink to="/tv">TV</StyledLink>
                     </LinkItem>
                     <LinkItem>
-                        <StyledLink current={pathname==='/search'} to="/search">Search</StyledLink>
+                        <StyledLink to="/search">Search</StyledLink>
                     </LinkItem>
                 </LinkList>
+                <FocusLine location={getLocation(pathname)}></FocusLine>
+                {console.log(getLocation(pathname)*50)}
             </NavWrapper>
         </HeaderWrapper>
     );
