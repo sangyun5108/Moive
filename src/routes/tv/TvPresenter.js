@@ -1,8 +1,19 @@
 import React from 'react';
 
-const TvPresenter = () => {
+const TvPresenter = ({topRated,popular,airingToday,error,isLoading}) => {
+    
+    if(isLoading){
+        return(
+            <>Loading...</>
+        )
+    }else if(error){
+        return(
+            <>Error</>
+        )
+    }
+    
     return(
-        <></>
+        <>Tv</>
     )
 }
 

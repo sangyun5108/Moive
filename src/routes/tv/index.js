@@ -1,3 +1,11 @@
 import TvContainer from './TvContainer';
 
-export default TvContainer;
+const Tv = () => {
+    return (
+        <>
+            <TvContainer/>
+        </>
+    )
+}
+
+export default Tv;

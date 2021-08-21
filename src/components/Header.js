@@ -61,7 +61,6 @@ const Header = ({location:{pathname}}) => {
                     </LinkItem>
                 </LinkList>
                 <FocusLine location={getLocation(pathname)}></FocusLine>
-                {console.log(getLocation(pathname)*50)}
             </NavWrapper>
         </HeaderWrapper>
     );
