@@ -13,35 +13,32 @@ const SearchContainer = () => {
 
     const handleSubmit = (term) => {
         setSearchTerm(term);
-        searchByTerm();
-    }
-
-    const searchByTerm = async() => {
-        setIsLoading(true);
-        try {
-            await movieApi.search(searchTerm)
-            .then((response)=>{
-                const {results} = response.data;
-                setMovieResults(results);
-            })
-
-            await tvApi.search(searchTerm)
-            .then((response)=>{
-                const {results} = response.data;
-                setTvResults(results);
-            })
-        }
-        catch {
-            setError("Can't get search information");
-        }
-        finally {
-            setIsLoading(false);
-        }
     }
 
     useEffect(()=>{
-        searchByTerm();
-    },[])
+        (async function(){
+            setIsLoading(true);
+            try {
+                await movieApi.search(searchTerm)
+                .then((response)=>{
+                    const {results} = response.data;
+                    setMovieResults(results);
+                })
+
+                await tvApi.search(searchTerm)
+                .then((response)=>{
+                    const {results} = response.data;
+                    setTvResults(results);
+                })
+            }
+            catch {
+                setError("Can't get search information");
+            }
+            finally {
+                setIsLoading(false);
+            }
+        })();
+    },[searchTerm])
 
     return (
         <>

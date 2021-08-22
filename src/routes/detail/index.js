@@ -3,8 +3,8 @@ import DetailContainer from './DetailContainer';
 
 const Detail = (props) => {
 
-    const [isMovie,setIsMovie] = useState(false);
-    const [pathname,setPathname] = useState('');
+    const [isMovie,setIsMovie] = useState('');
+    const [detailId,setDetailId] = useState('');
 
     useEffect(()=>{
         const {
@@ -13,19 +13,18 @@ const Detail = (props) => {
             location:{pathname}
         } = props;
 
-        setPathname(pathname);
-
         if(isNaN(Number(id))){
             return push('/');
         }
 
+        setDetailId(id);
         setIsMovie(pathname.includes('/movie/'));
 
     },[isMovie,props]);
     
     return (
         <>
-            <DetailContainer isMovie={isMovie} pathname={pathname}/>
+            <DetailContainer isMovie={isMovie} detailId={detailId}/>
         </>
     )
 }
