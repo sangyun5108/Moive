@@ -21,14 +21,12 @@ const SearchContainer = () => {
         try {
             await movieApi.search(searchTerm)
             .then((response)=>{
-                console.log(response.data);
                 const {results} = response.data;
                 setMovieResults(results);
             })
 
             await tvApi.search(searchTerm)
             .then((response)=>{
-                console.log(response.data);
                 const {results} = response.data;
                 setTvResults(results);
             })
