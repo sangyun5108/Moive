@@ -7,12 +7,17 @@ const SearchContainer = () => {
 
     const [movieResults,setMovieResults] = useState('');
     const [tvResults, setTvResults] = useState('');
-    const [searchTerm, setSearchTerm] = useState('code');
+    const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleSubmit = (term) => {
+    const handleSubmit = (event,term) => {
         setSearchTerm(term);
+        event.preventDefault();
+    }
+
+    const updateTerm = (event) => {
+        setSearchTerm(event.target.value);
     }
 
     useEffect(()=>{
@@ -49,6 +54,7 @@ const SearchContainer = () => {
                 error={error}
                 isLoaing={isLoading}
                 handleSubmit={handleSubmit}
+                updateTerm={updateTerm}
             />
         </>
     )
