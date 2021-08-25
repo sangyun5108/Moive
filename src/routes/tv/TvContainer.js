@@ -13,6 +13,7 @@ const TvContainer = () => {
     useEffect(()=>{
         (async function(){
             try {
+
                 await tvApi.topRated()
                 .then((response)=>{
                     const {results} = response.data;

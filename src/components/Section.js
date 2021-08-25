@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Container = styled.div`
     :not(:last-child){
         margin-bottom:50px;
+        margin-right:10px;
     }
 `;
 

@@ -1,4 +1,9 @@
 const getLocation = (pathname) => {
+
+    if(pathname.includes('/tv')){
+        pathname = '/tv';
+    }
+
     switch(pathname){
         case '/':
             return 0;
