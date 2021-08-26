@@ -61,7 +61,6 @@ const HomePresenter = ({nowPlaying,upComing,popular,error,isLoading}) => {
                     {popular&&popular.length>0&&
                 <Section title='Popular Movies'>
                         {popular.map((movie)=>{
-                            console.log(movie.vote_average);
                             return (
 
                                 <Poster 

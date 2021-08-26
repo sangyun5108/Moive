@@ -71,6 +71,7 @@ const Overview = styled.p`
 const DetailPresenter = ({result,error,isLoading}) => {
     return(
         <>
+            {console.log(result)}
             <Helmet>
                 <title>Detail | Nonflix</title>
             </Helmet>  
