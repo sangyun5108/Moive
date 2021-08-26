@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import { withRouter } from 'react-router';
+import getLocation from '../utils/getLocation';
 
 const HeaderWrapper = styled.header`
     color:white;
@@ -33,7 +35,17 @@ const StyledLink = styled(Link)`
     align-items:center;
 `;
 
-const Header = () => {
+const FocusLine = styled.div`
+    width:50px;
+    height:5px;
+    position:absolute;
+    bottom:1px;
+    transform:translateX(${props=>props.location*50}px);
+    transition:transform 0.3s ease 0s;
+    background-color:#3498db;
+`;
+
+const Header = ({location:{pathname}}) => {
     return(
         <HeaderWrapper>
             <NavWrapper>
@@ -48,9 +60,10 @@ const Header = () => {
                         <StyledLink to="/search">Search</StyledLink>
                     </LinkItem>
                 </LinkList>
+                <FocusLine location={getLocation(pathname)}></FocusLine>
             </NavWrapper>
         </HeaderWrapper>
     );
 }
 
-export default Header;
+export default withRouter(Header);
