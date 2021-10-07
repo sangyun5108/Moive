@@ -6,6 +6,8 @@ const Detail = (props) => {
     const [isMovie,setIsMovie] = useState('');
     const [detailId,setDetailId] = useState('');
 
+    console.log(props);
+
     useEffect(()=>{
         const {
             match:{params:{id}},
